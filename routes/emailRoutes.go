@@ -7,7 +7,9 @@ import (
 )
 
 func EmailRouter(incomingRoutes *gin.Engine) {
-	incomingRoutes.POST("/send-otp", handler.SendOTPHandler)
-	incomingRoutes.POST("/verify-otp", handler.VerifyOTPHandler)
+	incomingRoutes.POST("/send-otp", handler.SendOTPHandler())
+	incomingRoutes.POST("/verify-otp", handler.VerifyOTPHandler())
+	incomingRoutes.POST("/forgot-password", handler.ForgotPasswordHandler())
+	incomingRoutes.POST("/reset-password", handler.ResetPasswordHandler())
 
 }

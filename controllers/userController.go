@@ -5,6 +5,7 @@ import (
 	"expanse-tracker/db"
 	helper "expanse-tracker/helpers"
 	"expanse-tracker/models"
+	"expanse-tracker/utils"
 	"fmt"
 	"log"
 	"net/http"
@@ -45,7 +46,7 @@ func SignUp() gin.HandlerFunc {
 			return
 		}
 
-		password := HashPassword(*user.Password)
+		password := utils.HashPassword(*user.Password)
 		user.Password = &password
 
 		if count > 0 {
@@ -131,14 +132,14 @@ func GetUSer() gin.HandlerFunc {
 
 }
 
-func HashPassword(password string) string {
-	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
-	if err != nil {
-		log.Panic(err)
-	}
-	return string(bytes)
+// func HashPassword(password string) string {
+// 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+// 	if err != nil {
+// 		log.Panic(err)
+// 	}
+// 	return string(bytes)
 
-}
+// }
 
 func VerifyPassword(userPassword string, providedPassword string) (bool, string) {
 
