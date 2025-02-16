@@ -1,0 +1,13 @@
+package routes
+
+import (
+	handler "expanse-tracker/handlers"
+
+	"github.com/gin-gonic/gin"
+)
+
+func EmailRouter(incomingRoutes *gin.Engine) {
+	incomingRoutes.POST("/send-otp", handler.SendOTPHandler)
+	incomingRoutes.POST("/verify-otp", handler.VerifyOTPHandler)
+
+}
